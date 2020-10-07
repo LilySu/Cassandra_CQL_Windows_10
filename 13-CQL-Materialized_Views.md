@@ -2,7 +2,7 @@
 ```
 SELECT * FROM test_keyspace.employee_by_department ;
 ```
-
+```
  department | car_make | car_model | id | start_year | first_name | last_name
 ------------+----------+-----------+----+------------+------------+-----------
          HR |     AUDI |   Compact |  4 |       2017 |        Tom |    Streep
@@ -16,6 +16,7 @@ SELECT * FROM test_keyspace.employee_by_department ;
          IT |      BMW |    Saloon | 11 |       2011 |    Natalie |      Depp
          IT |    LEXUS |    Saloon |  3 |       2015 |       Brad |      Depp
          FI |     AUDI |    Saloon | 10 |       2012 |     Dwayne |    Streep
+```
 
 #### Set Materialized Views
 
@@ -35,6 +36,7 @@ CREATE MATERIALIZED VIEW test_keyspace.employee_by_department
 ```
 SELECT * FROM test_keyspace.employee_by_department WHERE department='IT';
 ```
+```
 
  department | car_make | car_model | id | start_year | first_name | last_name
 ------------+----------+-----------+----+------------+------------+-----------
@@ -44,11 +46,12 @@ SELECT * FROM test_keyspace.employee_by_department WHERE department='IT';
          IT |      BMW |    Saloon |  7 |       2013 |      Julia |      Depp
          IT |      BMW |    Saloon | 11 |       2011 |    Natalie |      Depp
          IT |    LEXUS |    Saloon |  3 |       2015 |       Brad |      Depp
-
+```
 ```
 SELECT * FROM test_keyspace.employee_by_car_make WHERE car_make='BMW';
+```
 ```
  car_make | id | car_model
 ----------+----+-----------
       BMW |  1 |     TRUCK
-
+```

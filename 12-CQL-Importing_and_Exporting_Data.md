@@ -10,6 +10,7 @@ COPY test_csv_import (car_make, car_model, start_year, id, first_name, last_name
 ```
 SELECT * FROM test_csv_import ;
 ```
+```
  car_make | car_model | start_year | id | department | first_name | last_name
 ----------+-----------+------------+----+------------+------------+-----------
       BMW |   Compact |       2012 |  9 |         IT |     Georgy |      Depp
@@ -23,6 +24,7 @@ SELECT * FROM test_csv_import ;
      AUDI |    Saloon |       2012 | 10 |         FI |     Dwayne |    Streep
      AUDI |    Saloon |       2013 |  2 |         HR |      Meryl |    Streep
      AUDI |    Saloon |       2013 |  8 |         HR |     Nicole |    Streep
+```
 
 #### Save Out Entire Table as a .csv to the Local Directory
 ```

@@ -82,10 +82,11 @@ INSERT INTO employee_by_car_make (car_make, id, car_model) VALUES ('BMW', 4, 'Sp
 ```
 SELECT * FROM employee_by_car_make WHERE car_make='BMW' ORDER BY id;
 ```
+```
  car_make | id | car_model
 ----------+----+------------
       BMX |  1 | Sports Car
-
+```
 
 #### Insert Data into Table
 ```
@@ -114,14 +115,16 @@ INSERT INTO employee_by_car_make_and_model (car_make, car_model, id) VALUES ('BM
 ```
 SELECT * FROM employee_by_car_make_and_model WHERE car_make= 'BMW' AND car_model='HATCHBACK' ;
 ```
+```
  car_make | car_model | id | name
 ----------+-----------+----+------
       BMW | HATCHBACK |  1 |  Bob
       BMW | HATCHBACK |  2 | null
       BMW | HATCHBACK |  3 | null
-
+```
 ```
 SELECT * FROM employee_by_car_make ;
+```
 ```
  car_make | id | car_model
 ----------+----+------------
@@ -132,10 +135,12 @@ SELECT * FROM employee_by_car_make ;
      AUDI |  2 |      Truck
      AUDI |  5 |  Hatchback
      AUDI |  8 | Sports Car
+```
 
 #### Writetime - Find Out When Item Inserted into Table
 ```
 SELECT car_make, car_model, writetime(car_model) FROM employee_by_car_make ;
+```
 ```
  car_make | car_model  | writetime(car_model)
 ----------+------------+----------------------
@@ -146,6 +151,7 @@ SELECT car_make, car_model, writetime(car_model) FROM employee_by_car_make ;
      AUDI |      Truck |     1602018096459000
      AUDI |  Hatchback |     1602018119356000
      AUDI | Sports Car |     1602019087500000
+```
 
 <a href="https://www.youtube.com/watch?v=QA-owFLFNcQ"><img src="images/cassandra_05.PNG" width="90%" /></a>
 
@@ -158,21 +164,24 @@ UPDATE employee_by_car_make USING TTL 60 SET car_model='TRUCK' WHERE car_make='B
 ```
 SELECT * FROM employee_by_id ;
 ```
+```
  id | name | position
 ----+------+----------
   1 | John |  Manager
   2 |  Bob |      CEO
+```
 ```
 ALTER TABLE employee_by_id ADD phone set<text>;
 ```
 ```
 SELECT * FROM employee_by_id ;
 ```
+```
  id | name | phone | position
 ----+------+-------+----------
   1 | John |  null |  Manager
   2 |  Bob |  null |      CEO
-
+```
 
 #### Updating Altering Existing Values in Table Using Variables
 ```
@@ -181,10 +190,12 @@ UPDATE employee_by_id SET phone = {'343','565'} WHERE id =1 ;
 ```
 SELECT * FROM employee_by_id ;
 ```
+```
  id | name | phone          | position
 ----+------+----------------+----------
   1 | John | {'343', '565'} |  Manager
   2 |  Bob |           null |      CEO
+```
 
 #### Adding Variables
 ```
@@ -193,10 +204,12 @@ UPDATE employee_by_id SET phone = phone + {'555'} WHERE id =1 ;
 ```
 SELECT * FROM employee_by_id ;
 ```
+```
  id | name | phone                 | position
 ----+------+-----------------------+----------
   1 | John | {'343', '555', '565'} |  Manager
   2 |  Bob |                  null |      CEO
+```
 
 #### Subtracting Variables
 ```
@@ -207,9 +220,11 @@ UPDATE employee_by_id SET phone = phone - {'565'} WHERE id =1 ;
 ```
 SELECT * FROM employee_by_id WHERE name='John' ALLOW FILTERING ;
 ```
+```
  id | name | phone          | position
 ----+------+----------------+----------
   1 | John | {'343', '555'} |  Manager
+```
 
 #### Create Index
 ```
@@ -218,10 +233,11 @@ CREATE INDEX ON employee_by_id (name);
 ```
 SELECT * FROM employee_by_id WHERE name='John' ;
 ```
+```
  id | name | phone          | position
 ----+------+----------------+----------
   1 | John | {'343', '555'} |  Manager
-
+```
 
 #### Create Table with Uuid Type
 ```
@@ -237,12 +253,14 @@ INSERT INTO employee_by_uuid (id, first_name, last_name) VALUES (uuid(), 'bob', 
 ```
 SELECT * FROM employee_by_uuid
 ```
+```
  id                                   | first_name | last_name
 --------------------------------------+------------+-----------
  e5ee566e-9963-4682-b181-95e701f1f7c8 |        bob |    hanson
  daf6b263-cc61-4881-9919-b9b121ed912b |        tom |     dunne
  2f51f0d1-e72d-45cd-b349-78f6f1f3e042 |        tim |     smith
  87ea1615-adea-404f-9841-c8bef20b78b0 |        tom |     dunne
+```
 
 #### Timeuuid
 ```
@@ -272,11 +290,13 @@ UPDATE purchases_by_customer_id SET purchase = purchase + 1 WHERE id=uuid();
 ```
 SELECT * FROM purchases_by_customer_id ;
 ```
+```
  id                                   | purchase
 --------------------------------------+----------
  10698d7e-87fc-49da-8ed8-dca9734daf77 |        1
  63047cb2-a17e-47d6-89f0-27e5418443df |        1
  4bf6ff97-b44d-4fad-8053-cd4ae277c985 |        1
+```
 
 #### Add 1 to Counter via Update
 ```
@@ -285,11 +305,13 @@ UPDATE purchases_by_customer_id SET purchase = purchase + 1 WHERE id=4bf6ff97-b4
 ```
 SELECT * FROM purchases_by_customer_id ;
 ```
+```
  id                                   | purchase
 --------------------------------------+----------
  10698d7e-87fc-49da-8ed8-dca9734daf77 |        1
  63047cb2-a17e-47d6-89f0-27e5418443df |        1
  4bf6ff97-b44d-4fad-8053-cd4ae277c985 |        2
+```
 
 <a href="https://www.youtube.com/watch?v=N71NwCKfyQ4"><img src="images/cassandra_08.PNG" width="90%" /></a>
 <a href="https://www.youtube.com/watch?v=N71NwCKfyQ4"><img src="images/cassandra_09.PNG" width="90%" /></a>
@@ -306,6 +328,7 @@ COPY test_csv_import (car_make, car_model, start_year, id, first_name, last_name
 ```
 SELECT * FROM test_csv_import ;
 ```
+```
  car_make | car_model | start_year | id | department | first_name | last_name
 ----------+-----------+------------+----+------------+------------+-----------
       BMW |   Compact |       2012 |  9 |         IT |     Georgy |      Depp
@@ -319,6 +342,7 @@ SELECT * FROM test_csv_import ;
      AUDI |    Saloon |       2012 | 10 |         FI |     Dwayne |    Streep
      AUDI |    Saloon |       2013 |  2 |         HR |      Meryl |    Streep
      AUDI |    Saloon |       2013 |  8 |         HR |     Nicole |    Streep
+```
 
 #### Save Out Entire Table as a .csv to the Local Directory
 ```
@@ -334,7 +358,7 @@ COPY test_csv_import (car_mark, department, first_name) TO 'C:\Users\lilyx\Deskt
 ```
 SELECT * FROM test_keyspace.employee_by_department ;
 ```
-
+```
  department | car_make | car_model | id | start_year | first_name | last_name
 ------------+----------+-----------+----+------------+------------+-----------
          HR |     AUDI |   Compact |  4 |       2017 |        Tom |    Streep
@@ -348,6 +372,7 @@ SELECT * FROM test_keyspace.employee_by_department ;
          IT |      BMW |    Saloon | 11 |       2011 |    Natalie |      Depp
          IT |    LEXUS |    Saloon |  3 |       2015 |       Brad |      Depp
          FI |     AUDI |    Saloon | 10 |       2012 |     Dwayne |    Streep
+```
 
 <a href="https://www.youtube.com/watch?v=XhNIU7X_HUU"><img src="images/cassandra_10.PNG" width="90%" /></a>
 <a href="https://www.youtube.com/watch?v=XhNIU7X_HUU"><img src="images/cassandra_11.PNG" width="90%" /></a>
@@ -383,9 +408,11 @@ SELECT * FROM test_keyspace.employee_by_department WHERE department='IT';
 ```
 SELECT * FROM test_keyspace.employee_by_car_make WHERE car_make='BMW';
 ```
+```
  car_make | id | car_model
 ----------+----+-----------
       BMW |  1 |     TRUCK
+```
 
 <a href="https://www.youtube.com/watch?v=NKsRYoLhSJU"><img src="images/cassandra_12.PNG" width="90%" /></a>
 
@@ -399,6 +426,8 @@ Run cassandratest.py
 ```
 SELECT * FROM python_test;
 ```
+```
  id                                   | first_name | last_name
 --------------------------------------+------------+-----------
  196f8ec4-030e-4da3-9e29-f6cdd4ad3970 |        bob |      hope
+```

@@ -1,4 +1,3 @@
-
 #### Insert Data into Table
 ```
 INSERT INTO employee_by_id (id, name, position) VALUES (2, 'Bob', 'CEO') ;
@@ -12,10 +11,11 @@ INSERT INTO employee_by_car_make (car_make, id, car_model) VALUES ('BMW', 4, 'Sp
 ```
 SELECT * FROM employee_by_car_make WHERE car_make='BMW' ORDER BY id;
 ```
+```
  car_make | id | car_model
 ----------+----+------------
       BMX |  1 | Sports Car
-
+```
 
 #### Insert Data into Table
 ```
@@ -44,9 +44,10 @@ INSERT INTO employee_by_car_make_and_model (car_make, car_model, id) VALUES ('BM
 ```
 SELECT * FROM employee_by_car_make_and_model WHERE car_make= 'BMW' AND car_model='HATCHBACK' ;
 ```
+```
  car_make | car_model | id | name
 ----------+-----------+----+------
       BMW | HATCHBACK |  1 |  Bob
       BMW | HATCHBACK |  2 | null
       BMW | HATCHBACK |  3 | null
-
+```
