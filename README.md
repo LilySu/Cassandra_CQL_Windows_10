@@ -395,7 +395,7 @@ CREATE MATERIALIZED VIEW test_keyspace.employee_by_department
 ```
 SELECT * FROM test_keyspace.employee_by_department WHERE department='IT';
 ```
-
+```
  department | car_make | car_model | id | start_year | first_name | last_name
 ------------+----------+-----------+----+------------+------------+-----------
          IT |      BMW |   Compact |  5 |       2019 |      Angel |      Depp
@@ -404,7 +404,7 @@ SELECT * FROM test_keyspace.employee_by_department WHERE department='IT';
          IT |      BMW |    Saloon |  7 |       2013 |      Julia |      Depp
          IT |      BMW |    Saloon | 11 |       2011 |    Natalie |      Depp
          IT |    LEXUS |    Saloon |  3 |       2015 |       Brad |      Depp
-
+```
 ```
 SELECT * FROM test_keyspace.employee_by_car_make WHERE car_make='BMW';
 ```
