@@ -1,5 +1,14 @@
 #### CREATE KEYSPACE
-Outermost container for data, a cluster may contain many key spaces
+
+In Cassandra Shell Running cqlsh:
+`CREATE KEYSPACE test_keyspace WITH replication = {'class':'SimpleStrategy','replication_factor':'1'} AND durable_writes = 'true';`
+- specify name of keyspace
+- specify settings - set replication factor for # nodes to replicate in cluster, ie copied 3 times would be 3
+- specify replication class - a one-node cluster is 'SimpleStrategy'
+- set if we want durable writes - default to true, false increases speed of writes and also increases data loss.
+
+
+##### Outermost container for data, a cluster may contain many key spaces
 - a keyspace can have many tables
 - a table contains a set of rows of key-value-pair columns
 - after the tables, we deal with wide rows consisting of a primary key and a large # of columns
